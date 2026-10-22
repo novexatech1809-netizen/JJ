@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#173B46" />
+<meta name="theme-color" content="#242321" />
 
 <title>Product Catalogue — B. Basharat &amp; Brothers, Karachi</title>
 <meta name="description" content="Browse the B. Basharat & Brothers jewellery catalogue — bangles, jewellery sets, earrings, rings, necklaces and bridal pieces. Every piece carries a unique item code." />
@@ -14,42 +14,29 @@
 
 <style>
 /* ============================================================
-   B. Basharat & Brothers — Product Catalogue
-   Palette (applied in brand proportions):
-     70%  Warm Ivory     #FAF8F3  — page & surfaces
-     20%  Deep Teal      #173B46  — header, footer, headings, buttons
-      5%  Champagne Gold #B89555  — borders, icons, dividers, premium detail
-      3%  Brand Cyan     #13BFEA  — small brand highlights & selected UI
-      2%  Soft Charcoal  #292824  — body text, item codes, subtle details
+   B. Basharat & Brothers — Premium Jewellery Catalogue
+   Palette:
+     Ivory            #F7F2E8  — page background & surfaces
+     Champagne Gold   #C6A15B  — accents, borders, highlights
+     Deep Charcoal    #242321  — headings & primary text
+     Pure White       #FFFFFF  — product cards & photo backgrounds
    ============================================================ */
 
 :root{
-  /* 70% — Warm Ivory */
-  --ivory:#FAF8F3;
-  --ivory-deep:#F3EEE2;
-  --ivory-line:#EAE2D1;
+  /* Palette */
+  --ivory:#F7F2E8;
+  --ivory-deep:#EFE8D8;
+  --ivory-line:#E4DAC5;
 
-  /* 20% — Deep Teal */
-  --teal:#173B46;
-  --teal-deep:#0E2831;
-  --teal-soft:#2A5563;
+  --gold:#C6A15B;
+  --gold-deep:#A98446;
+  --gold-soft:#D9BF8A;
+  --gold-line:rgba(198,161,91,.42);
+  --gold-line-soft:rgba(198,161,91,.22);
 
-  /* 5% — Champagne Gold */
-  --gold:#B89555;
-  --gold-soft:#D4B987;
-  --gold-line:rgba(184,149,85,.38);
-  --gold-line-soft:rgba(184,149,85,.20);
-
-  /* 3% — Brand Cyan */
-  --cyan:#13BFEA;
-  --cyan-soft:#E4F8FE;
-  --cyan-line:rgba(19,191,234,.45);
-  --cyan-glow:rgba(19,191,234,.28);
-
-  /* 2% — Soft Charcoal */
-  --charcoal:#292824;
-  --charcoal-soft:#55524A;
-  --muted:#8C877A;
+  --charcoal:#242321;
+  --charcoal-soft:#4A4742;
+  --charcoal-mute:#7A766E;
 
   --white:#FFFFFF;
 
@@ -67,13 +54,16 @@ body{
   color:var(--charcoal);
   background:var(--ivory);
   -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
+
+body.no-scroll{overflow:hidden}
 
 img{max-width:100%;display:block}
 button{font-family:inherit}
 a{color:inherit}
 
-h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--charcoal)}
 
 .container{width:min(1240px, 100% - 48px);margin-inline:auto}
 
@@ -82,11 +72,11 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
 }
 
-::selection{background:var(--cyan-soft);color:var(--teal)}
+::selection{background:var(--gold-soft);color:var(--charcoal)}
 
 .skip-link{
   position:absolute;left:16px;top:-60px;z-index:300;
-  background:var(--teal);color:var(--ivory);
+  background:var(--charcoal);color:var(--ivory);
   padding:12px 18px;text-decoration:none;
   font-size:13px;font-weight:500;letter-spacing:.05em;
   border:1px solid var(--gold);
@@ -94,17 +84,18 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
 }
 .skip-link:focus{top:16px}
 
-:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
-/* ---------- Top bar (deep teal — anchors the page) ---------- */
+/* ---------- Top bar ---------- */
 .topbar{
-  background:var(--teal);
-  color:rgba(250,248,243,.85);
+  background:var(--charcoal);
+  color:rgba(247,242,232,.78);
+  border-bottom:1px solid var(--gold-line);
 }
 .topbar-inner{
   display:flex;align-items:center;justify-content:center;gap:14px;
-  padding:10px 0;flex-wrap:wrap;
-  font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  padding:11px 0;flex-wrap:wrap;
+  font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
 }
 .topbar-dot{
   width:3px;height:3px;border-radius:50%;
@@ -114,44 +105,42 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
 /* ---------- Header ---------- */
 .site-header{
   position:sticky;top:0;z-index:80;
-  background:rgba(250,248,243,.96);
+  background:rgba(247,242,232,.96);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--gold-line-soft);
+  border-bottom:1px solid var(--gold-line);
 }
-.header-inner{display:flex;align-items:center;gap:28px;height:80px}
+.header-inner{display:flex;align-items:center;gap:28px;height:84px}
 
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none}
 .brand-mark{
-  position:relative;width:44px;height:44px;flex:0 0 auto;
+  position:relative;width:46px;height:46px;flex:0 0 auto;
   display:grid;place-items:center;border-radius:50%;
-  background:var(--teal);
+  background:var(--charcoal);
   color:var(--ivory);
-  font-family:var(--serif);font-size:18px;letter-spacing:.02em;
+  font-family:var(--serif);font-size:19px;letter-spacing:.02em;
   box-shadow:inset 0 0 0 1px var(--gold);
 }
-/* Small cyan accent dot — the "brand highlight" */
 .brand-mark::after{
   content:"";position:absolute;right:-3px;bottom:-3px;
   width:10px;height:10px;border-radius:50%;
-  background:var(--cyan);
+  background:var(--gold);
   border:2px solid var(--ivory);
-  box-shadow:0 0 6px var(--cyan-glow);
 }
 .brand-text{display:flex;flex-direction:column;line-height:1.1}
-.brand-name{font-family:var(--serif);font-size:21px;color:var(--teal)}
+.brand-name{font-family:var(--serif);font-size:22px;color:var(--charcoal)}
 .brand-sub{
-  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--gold);margin-top:4px;font-weight:500;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold-deep);margin-top:4px;font-weight:500;
 }
 
-/* ---------- Hero (warm ivory canvas) ---------- */
+/* ---------- Hero ---------- */
 .hero{
   position:relative;
-  padding:70px 0 48px;
+  padding:72px 0 50px;
   overflow:hidden;
   background:
-    radial-gradient(ellipse at 92% -10%, rgba(184,149,85,.10), transparent 55%),
-    radial-gradient(ellipse at -5% 110%, rgba(19,191,234,.06), transparent 55%),
+    radial-gradient(ellipse at 92% -10%, rgba(198,161,91,.10), transparent 55%),
+    radial-gradient(ellipse at -5% 110%, rgba(36,35,33,.04), transparent 55%),
     var(--ivory);
   border-bottom:1px solid var(--gold-line-soft);
 }
@@ -161,14 +150,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
 .eyebrow{
   position:relative;
   margin:0 0 18px;
-  padding-left:38px;
+  padding-left:40px;
   font-size:11.5px;font-weight:600;
-  letter-spacing:.26em;text-transform:uppercase;color:var(--gold);
+  letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);
 }
 .eyebrow::before{
   content:"";
   position:absolute;left:0;top:50%;
-  width:24px;height:1.5px;
+  width:26px;height:1.5px;
   background:var(--gold);
   transform:translateY(-50%);
 }
@@ -177,38 +166,32 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   margin:0 0 22px;
   font-size:clamp(36px,4.8vw,58px);
   line-height:1.06;letter-spacing:-.018em;
-  color:var(--teal);
+  color:var(--charcoal);
 }
-.hero h1 em{
-  font-style:italic;
-  color:var(--gold);
-}
+.hero h1 em{font-style:italic;color:var(--gold-deep)}
 .hero h1::after{
   content:"";
   display:block;
   width:88px;height:2px;
   margin-top:26px;
-  background:linear-gradient(90deg, var(--gold) 0%, var(--teal) 100%);
+  background:var(--gold);
   border-radius:1px;
 }
 
 .hero-lede{
   margin:0 0 30px;max-width:58ch;
-  font-size:16.5px;line-height:1.75;color:var(--charcoal-soft);
+  font-size:16.5px;line-height:1.78;color:var(--charcoal-soft);
 }
 
 .hero-stats{
-  display:flex;flex-wrap:wrap;gap:44px;margin:0;padding:26px 0 0;
+  display:flex;flex-wrap:wrap;gap:48px;margin:0;padding:26px 0 0;
   border-top:1px solid var(--gold-line-soft);list-style:none;
 }
 .hero-stats li{display:flex;flex-direction:column;gap:2px}
-.hero-stats strong{
-  font-family:var(--serif);font-size:30px;line-height:1;
-  color:var(--teal);
-}
+.hero-stats strong{font-family:var(--serif);font-size:30px;line-height:1;color:var(--charcoal)}
 .hero-stats span{
-  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--muted);margin-top:6px;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--charcoal-mute);margin-top:6px;
 }
 
 /* ---------- Toolbar ---------- */
@@ -226,18 +209,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   color:var(--charcoal-soft);
   font-size:13px;letter-spacing:.03em;
   cursor:pointer;
-  transition:background .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease;
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
 }
-.chip:hover{
-  border-color:var(--gold);
-  color:var(--teal);
-  background:var(--ivory-deep);
-}
-/* Active chip: deep teal with a subtle cyan bottom accent */
+.chip:hover{border-color:var(--gold);color:var(--charcoal);background:var(--ivory)}
 .chip.is-active{
-  background:var(--teal);
-  border-color:var(--teal);
-  border-bottom:2px solid var(--cyan);
+  background:var(--charcoal);
+  border-color:var(--charcoal);
   color:var(--ivory);
   font-weight:500;
 }
@@ -247,7 +224,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
 .search-field{position:relative}
 .search-field svg{
   position:absolute;left:12px;top:50%;transform:translateY(-50%);
-  width:17px;height:17px;color:var(--gold);pointer-events:none;
+  width:17px;height:17px;color:var(--gold-deep);pointer-events:none;
 }
 .search-field input{
   width:260px;height:42px;padding:0 14px 0 38px;
@@ -255,11 +232,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   font:inherit;font-size:14px;color:var(--charcoal);
   transition:border-color .2s ease,box-shadow .2s ease;
 }
-.search-field input::placeholder{color:var(--muted)}
+.search-field input::placeholder{color:var(--charcoal-mute)}
 .search-field input:focus{
-  outline:none;
-  border-color:var(--gold);
-  box-shadow:0 0 0 3px var(--cyan-glow);
+  outline:none;border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(198,161,91,.20);
 }
 
 .sort-select{
@@ -267,20 +243,19 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   border:1px solid var(--gold-line-soft);border-radius:2px;background:var(--white);
   font:inherit;font-size:14px;color:var(--charcoal);cursor:pointer;
   appearance:none;-webkit-appearance:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23B89555' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C6A15B' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
   background-repeat:no-repeat;background-position:right 13px center;
   transition:border-color .2s ease,box-shadow .2s ease;
 }
 .sort-select:focus{
-  outline:none;
-  border-color:var(--gold);
-  box-shadow:0 0 0 3px var(--cyan-glow);
+  outline:none;border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(198,161,91,.20);
 }
 
 .result-count{
   margin:0 0 28px;font-size:13px;letter-spacing:.03em;color:var(--charcoal-soft);
 }
-.result-count strong{color:var(--teal);font-weight:600}
+.result-count strong{color:var(--charcoal);font-weight:600}
 
 /* ---------- Product grid ---------- */
 .product-grid{
@@ -289,32 +264,36 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   gap:28px;
 }
 
+/* Card is a <button> so it is clickable & keyboard accessible */
 .product-card{
   position:relative;
   display:flex;flex-direction:column;overflow:hidden;
   background:var(--white);
   border:1px solid var(--gold-line-soft);
   border-radius:2px;
+  padding:0;
+  font:inherit;color:inherit;text-align:left;
+  cursor:pointer;
   transition:border-color .25s ease,box-shadow .3s ease,transform .3s ease;
 }
 .product-card:hover{
-  border-color:var(--teal);
-  box-shadow:0 22px 46px -28px rgba(23,59,70,.30);
+  border-color:var(--gold);
+  box-shadow:0 24px 46px -30px rgba(36,35,33,.28);
   transform:translateY(-2px);
 }
-/* Cyan accent line — small brand highlight on hover */
 .product-card::before{
   content:"";
   position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg, var(--cyan) 0%, var(--teal) 100%);
+  background:var(--gold);
   transform:scaleX(0);
   transform-origin:left;
   transition:transform .35s cubic-bezier(.4,0,.2,1);
   z-index:2;
 }
-.product-card:hover::before{transform:scaleX(1)}
+.product-card:hover::before,
+.product-card:focus-visible::before{transform:scaleX(1)}
 
-.card-media{position:relative;aspect-ratio:1/1.15;overflow:hidden;background:var(--ivory-deep)}
+.card-media{position:relative;aspect-ratio:1/1.15;overflow:hidden;background:var(--ivory)}
 .card-media img{
   width:100%;height:100%;object-fit:cover;
   transition:transform .6s ease;
@@ -324,23 +303,20 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
 .card-badge{
   position:absolute;top:12px;left:12px;z-index:2;
   padding:4px 9px;border-radius:2px;
-  background:var(--gold);color:var(--ivory);
+  background:var(--charcoal);color:var(--ivory);
   font-size:10.5px;font-weight:600;
   letter-spacing:.12em;text-transform:uppercase;
 }
-.card-badge.gold{
-  background:var(--teal);color:var(--ivory);
-}
+.card-badge.gold{background:var(--gold);color:var(--charcoal)}
 
 .card-body{display:flex;flex-direction:column;gap:8px;flex:1;padding:16px 16px 18px}
 
 .card-cat{
   font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold);font-weight:600;
+  color:var(--gold-deep);font-weight:600;
 }
-.card-name{margin:0;font-size:19px;line-height:1.25;color:var(--teal)}
+.card-name{margin:0;font-size:19px;line-height:1.25;color:var(--charcoal)}
 
-/* Item code — soft charcoal on a warm-ivory pill */
 .card-code{
   align-self:flex-start;
   padding:3px 9px;
@@ -349,39 +325,36 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   color:var(--charcoal);
   font-size:11px;font-weight:500;letter-spacing:.05em;
   border-radius:2px;
-  transition:background .2s ease,border-color .2s ease,color .2s ease;
+  transition:background .2s ease,border-color .2s ease;
 }
-/* Small cyan highlight on hover */
 .product-card:hover .card-code{
-  background:var(--cyan-soft);
-  border-color:var(--cyan-line);
-  color:var(--teal);
+  background:var(--ivory-deep);
+  border-color:var(--gold);
 }
 
 .card-price{
   display:flex;align-items:baseline;gap:8px;
   margin-top:auto;padding-top:10px;
-  font-size:15px;font-weight:500;color:var(--teal);
+  font-size:15px;font-weight:500;color:var(--charcoal);
   border-top:1px solid var(--gold-line-soft);
 }
-.card-price s{font-size:12.5px;font-weight:400;color:var(--muted)}
+.card-price s{font-size:12.5px;font-weight:400;color:var(--charcoal-mute)}
 
 /* ---------- Empty state ---------- */
 .empty-state{
   padding:84px 24px;text-align:center;
   border:1px dashed var(--gold-line);
   border-radius:2px;
-  background:var(--ivory-deep);
+  background:var(--ivory);
 }
 .empty-icon{
   display:inline-grid;place-items:center;width:60px;height:60px;
   margin-bottom:18px;border-radius:50%;
-  background:var(--white);
-  color:var(--teal);
+  background:var(--white);color:var(--gold-deep);
   border:1px solid var(--gold);
 }
 .empty-icon svg{width:26px;height:26px}
-.empty-state h3{margin:0 0 8px;font-size:26px;color:var(--teal)}
+.empty-state h3{margin:0 0 8px;font-size:26px;color:var(--charcoal)}
 .empty-state p{margin:0 0 22px;color:var(--charcoal-soft);font-size:15px;line-height:1.6}
 
 .btn{
@@ -394,27 +367,27 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
 .btn-outline{
   border-color:var(--gold);
   background:var(--white);
-  color:var(--teal);
+  color:var(--charcoal);
 }
 .btn-outline:hover{
-  background:var(--teal);
-  border-color:var(--teal);
+  background:var(--charcoal);
+  border-color:var(--charcoal);
   color:var(--ivory);
 }
 
 .catalogue-note{
   margin:48px 0 0;padding:18px 20px;
   border-left:2px solid var(--gold);
-  background:rgba(184,149,85,.06);
+  background:rgba(198,161,91,.07);
   font-size:13px;line-height:1.7;color:var(--charcoal-soft);
 }
-.catalogue-note strong{color:var(--teal)}
+.catalogue-note strong{color:var(--charcoal)}
 
-/* ---------- Footer (deep teal — closes the page) ---------- */
+/* ---------- Footer ---------- */
 .site-footer{
-  padding:42px 0 34px;
-  background:var(--teal);
-  color:rgba(250,248,243,.72);
+  padding:44px 0 36px;
+  background:var(--charcoal);
+  color:rgba(247,242,232,.72);
   border-top:1px solid var(--gold-line);
 }
 .footer-inner{
@@ -423,14 +396,174 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
 }
 .footer-inner p{margin:0}
 .footer-inner strong{color:var(--ivory);font-weight:500}
-/* Tiny cyan accent dot on footer attribution */
-.footer-inner strong::before{
-  content:"";
-  display:inline-block;
-  width:6px;height:6px;border-radius:50%;
-  background:var(--cyan);
-  margin-right:9px;vertical-align:middle;
-  transform:translateY(-1px);
+
+/* ============================================================
+   PRODUCT DETAIL MODAL
+   ============================================================ */
+.modal{position:fixed;inset:0;z-index:150;visibility:hidden}
+.modal.is-open{visibility:visible}
+
+.modal-backdrop{
+  position:absolute;inset:0;
+  background:rgba(36,35,33,.55);
+  opacity:0;transition:opacity .3s ease;
+}
+.modal.is-open .modal-backdrop{opacity:1}
+
+.modal-panel{
+  position:relative;
+  width:min(1000px, 100% - 32px);
+  max-height:calc(100vh - 64px);
+  overflow-y:auto;
+  margin:32px auto;
+  background:var(--white);
+  border:1px solid var(--gold);
+  border-radius:2px;
+  box-shadow:0 50px 90px -50px rgba(36,35,33,.6);
+  transform:translateY(14px);
+  opacity:0;
+  transition:transform .32s cubic-bezier(.4,0,.2,1), opacity .32s ease;
+}
+.modal.is-open .modal-panel{transform:none;opacity:1}
+
+.modal-close{
+  position:absolute;top:14px;right:14px;z-index:3;
+  width:40px;height:40px;display:grid;place-items:center;
+  border:1px solid var(--gold-line);
+  border-radius:50%;
+  background:var(--white);
+  color:var(--charcoal);
+  cursor:pointer;
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.modal-close:hover{
+  background:var(--charcoal);
+  border-color:var(--charcoal);
+  color:var(--ivory);
+}
+.modal-close svg{width:20px;height:20px}
+
+.pd-grid{display:grid;grid-template-columns:1fr 1fr}
+
+/* Gallery */
+.pd-gallery{
+  padding:24px;
+  background:var(--ivory);
+  border-right:1px solid var(--gold-line-soft);
+}
+.pd-main{
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border-radius:2px;
+  border:1px solid var(--gold-line-soft);
+  background:var(--white);
+}
+.pd-main img{width:100%;height:100%;object-fit:cover}
+
+.pd-thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pd-thumb{
+  width:66px;height:80px;padding:0;
+  border:1px solid var(--gold-line-soft);border-radius:2px;
+  background:var(--white);overflow:hidden;cursor:pointer;
+  opacity:.7;
+  transition:opacity .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.pd-thumb img{width:100%;height:100%;object-fit:cover}
+.pd-thumb:hover{opacity:1}
+.pd-thumb.is-active{
+  opacity:1;
+  border-color:var(--gold);
+  box-shadow:inset 0 0 0 1px var(--gold);
+}
+
+/* Info */
+.pd-info{padding:46px 42px 40px;display:flex;flex-direction:column}
+
+.pd-badge{
+  align-self:flex-start;
+  margin-bottom:14px;padding:4px 9px;border-radius:2px;
+  background:var(--gold);color:var(--charcoal);
+  font-size:10.5px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.pd-badge.is-new{background:var(--charcoal);color:var(--ivory)}
+
+.pd-cat{
+  margin:0 0 10px;
+  font-size:11px;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-deep);
+}
+
+.pd-title{
+  margin:0 0 12px;
+  font-family:var(--serif);
+  font-size:clamp(26px,3vw,36px);
+  line-height:1.12;letter-spacing:-.01em;
+  color:var(--charcoal);
+}
+
+.pd-code{
+  margin:0 0 20px;
+  font-size:13px;color:var(--charcoal-mute);
+}
+.pd-code strong{color:var(--charcoal);font-weight:500;letter-spacing:.02em}
+
+.pd-price{
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;
+  margin:0 0 22px;padding-bottom:22px;
+  border-bottom:1px solid var(--gold-line-soft);
+}
+.pd-price .now{
+  font-size:26px;font-weight:500;color:var(--charcoal);
+}
+.pd-price .was{
+  font-size:15px;color:var(--charcoal-mute);text-decoration:line-through;
+}
+.pd-price .off{
+  padding:3px 8px;border-radius:2px;
+  background:var(--gold);color:var(--charcoal);
+  font-size:10.5px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+}
+
+.pd-desc{
+  margin:0 0 24px;
+  color:var(--charcoal-soft);
+  font-size:15px;line-height:1.75;
+}
+
+.pd-meta{
+  display:grid;gap:0;
+  margin:0 0 24px;padding:0;list-style:none;
+}
+.pd-meta li{
+  display:grid;grid-template-columns:110px 1fr;gap:14px;
+  padding:12px 0;
+  border-bottom:1px solid var(--gold-line-soft);
+  font-size:14px;
+}
+.pd-meta li:first-child{border-top:1px solid var(--gold-line-soft)}
+.pd-meta dt{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--charcoal-mute);align-self:center;
+}
+.pd-meta dd{margin:0;color:var(--charcoal)}
+
+.pd-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.pd-options span{
+  padding:5px 13px;
+  border:1px solid var(--gold-line);
+  border-radius:2px;
+  background:var(--ivory);
+  font-size:13px;color:var(--charcoal);
+}
+
+.pd-foot{
+  margin-top:auto;padding-top:22px;
+  border-top:1px solid var(--gold-line-soft);
+  font-size:12.5px;line-height:1.65;
+  color:var(--charcoal-mute);
 }
 
 /* ---------- Responsive ---------- */
@@ -440,13 +573,17 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
 
 @media (max-width:860px){
   .product-grid{grid-template-columns:repeat(2,1fr)}
+  .pd-grid{grid-template-columns:1fr}
+  .pd-gallery{border-right:none;border-bottom:1px solid var(--gold-line-soft)}
+  .modal-panel{margin:16px auto;max-height:calc(100vh - 32px);width:calc(100% - 24px)}
+  .pd-info{padding:34px 26px 30px}
 }
 
 @media (max-width:620px){
   .container{width:min(1240px,100% - 32px)}
   .topbar-inner{gap:9px;font-size:10px;letter-spacing:.1em;padding:10px 0}
   .topbar-dot{display:none}
-  .header-inner{height:68px;gap:14px}
+  .header-inner{height:70px;gap:14px}
   .brand-sub{display:none}
   .brand-name{font-size:17px}
   .brand-mark{width:40px;height:40px;font-size:16px}
@@ -463,6 +600,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   .card-name{font-size:16px}
   .card-body{padding:12px 12px 14px;gap:6px}
   .empty-state{padding:60px 20px}
+  .pd-gallery{padding:16px}
+  .pd-info{padding:28px 20px 24px}
+  .pd-meta li{grid-template-columns:96px 1fr}
 }
 
 @media (max-width:400px){
@@ -518,7 +658,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
         <p class="hero-lede">
           Browse bangles, jewellery sets, earrings, rings, necklaces and bridal pieces —
           all in one place. Every piece is listed with its own unique item code and
-          a clear price in Pakistani Rupees.
+          a clear price in Pakistani Rupees. Select any piece to see its full details.
         </p>
         <ul class="hero-stats">
           <li><strong id="statCount">8</strong><span>Pieces listed</span></li>
@@ -591,6 +731,58 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   </div>
 </footer>
 
+<!-- ============ PRODUCT DETAIL MODAL ============ -->
+<div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pdTitle" aria-hidden="true">
+  <div class="modal-backdrop" data-close-modal></div>
+
+  <div class="modal-panel" role="document">
+    <button class="modal-close" type="button" data-close-modal aria-label="Close product details">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="pd-grid">
+      <div class="pd-gallery">
+        <div class="pd-main">
+          <img id="pdImage" src="" alt="" width="800" height="1000" decoding="async" />
+        </div>
+        <div class="pd-thumbs" id="pdThumbs" role="group" aria-label="Product image thumbnails"></div>
+      </div>
+
+      <div class="pd-info">
+        <span class="pd-badge" id="pdBadge" hidden></span>
+
+        <p class="pd-cat" id="pdCategory"></p>
+        <h2 class="pd-title" id="pdTitle"></h2>
+        <p class="pd-code">Item code: <strong id="pdCode"></strong></p>
+
+        <div class="pd-price" id="pdPrice"></div>
+
+        <p class="pd-desc" id="pdDesc"></p>
+
+        <ul class="pd-meta">
+          <li>
+            <dt>Category</dt>
+            <dd id="pdMetaCategory"></dd>
+          </li>
+          <li>
+            <dt>Availability</dt>
+            <dd id="pdMetaAvailability"></dd>
+          </li>
+          <li id="pdVariantRow" hidden>
+            <dt>Options</dt>
+            <dd><div class="pd-options" id="pdOptions"></div></dd>
+          </li>
+        </ul>
+
+        <p class="pd-foot">
+          Sample listing for catalogue reference. Prices, item codes and availability
+          require confirmation from the business.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   'use strict';
@@ -606,10 +798,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
       category: 'bangles',
       price: 18500,
       originalPrice: 22000,
-      description: 'A classic set of gold-tone bangles with a fine engraved finish.',
-      images: ['https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=700&q=80'],
+      description: 'A classic set of gold-tone bangles with a fine engraved finish. Designed to sit comfortably for everyday wear and to stack beautifully for occasions.',
+      images: [
+        'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=900&q=80'
+      ],
       badge: 'Bestseller',
-      available: true
+      available: true,
+      variants: ['2.4', '2.6', '2.8']
     },
     {
       id: 'bb-js-002',
@@ -618,10 +815,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
       category: 'jewelry-sets',
       price: 42500,
       originalPrice: 49500,
-      description: 'A coordinated set pairing a pearl-accented necklace with matching earrings.',
-      images: ['https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80'],
+      description: 'A coordinated set pairing a pearl-accented necklace with matching earrings. A polished choice for weddings, dinners and formal occasions.',
+      images: [
+        'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=900&q=80'
+      ],
       badge: 'Set',
-      available: true
+      available: true,
+      variants: ['Standard']
     },
     {
       id: 'bb-er-003',
@@ -630,10 +832,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
       category: 'earrings',
       price: 9800,
       originalPrice: 12500,
-      description: 'Crescent-shaped chandbali earrings with a delicate drop detail.',
-      images: ['https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=700&q=80'],
+      description: 'Crescent-shaped chandbali earrings with a delicate drop detail. Lightweight enough for long events, with a traditional silhouette.',
+      images: [
+        'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80'
+      ],
       badge: 'New',
-      available: true
+      available: true,
+      variants: ['Standard']
     },
     {
       id: 'bb-rg-004',
@@ -642,10 +849,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
       category: 'rings',
       price: 26500,
       originalPrice: 0,
-      description: 'A clean, solitaire-inspired ring with a single high-set stone and a slim band.',
-      images: ['https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80'],
+      description: 'A clean, solitaire-inspired ring with a single high-set stone and a slim band. A refined everyday piece that also works as an engagement option.',
+      images: [
+        'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=900&q=80'
+      ],
       badge: '',
-      available: true
+      available: true,
+      variants: ['16', '17', '18', '19']
     },
     {
       id: 'bb-nl-005',
@@ -654,10 +866,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
       category: 'necklaces',
       price: 15500,
       originalPrice: 18000,
-      description: 'A fine multi-layer chain necklace with a subtle gold-tone finish.',
-      images: ['https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80'],
+      description: 'A fine multi-layer chain necklace with a subtle gold-tone finish. Designed to sit lightly on the neckline and pair easily with both Eastern and Western outfits.',
+      images: [
+        'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80'
+      ],
       badge: '',
-      available: true
+      available: true,
+      variants: ['16"', '18"']
     },
     {
       id: 'bb-br-006',
@@ -666,10 +883,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
       category: 'bridal-jewelry',
       price: 125000,
       originalPrice: 145000,
-      description: 'A complete bridal-style set with necklace, earrings and maang tikka.',
-      images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=700&q=80'],
+      description: 'A complete bridal-style set including a statement necklace, earrings and a coordinated maang tikka. A rich, occasion-ready look for the main event.',
+      images: [
+        'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80'
+      ],
       badge: 'Bridal',
-      available: true
+      available: true,
+      variants: ['Standard']
     },
     {
       id: 'bb-bg-007',
@@ -678,10 +900,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
       category: 'bangles',
       price: 34500,
       originalPrice: 0,
-      description: 'A pair of wide kada-style bangles with a textured surface and a secure clasp.',
-      images: ['https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=80'],
+      description: 'A pair of wide kada-style bangles with a textured surface and a secure clasp. Substantial enough to wear alone, and striking when stacked.',
+      images: [
+        'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=900&q=80'
+      ],
       badge: '',
-      available: true
+      available: true,
+      variants: ['2.6', '2.8']
     },
     {
       id: 'bb-er-008',
@@ -690,10 +917,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
       category: 'earrings',
       price: 12500,
       originalPrice: 15000,
-      description: 'Traditional jhumka earrings with a domed body and a small hanging bead detail.',
-      images: ['https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=700&q=80'],
+      description: 'Traditional jhumka earrings with a domed body and a small hanging bead detail. A dependable choice for mehndi, Eid and family events.',
+      images: [
+        'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80'
+      ],
       badge: 'Bestseller',
-      available: true
+      available: true,
+      variants: ['Standard']
     }
   ];
 
@@ -777,7 +1009,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
   }
 
   /* ============================================================
-     RENDER: PRODUCT CARD
+     RENDER: PRODUCT CARD (clickable button)
      ============================================================ */
   function cardHTML(p) {
     var badge = p.badge
@@ -790,7 +1022,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
       : '';
 
     return '' +
-      '<article class="product-card" aria-label="' + esc(p.name) + '">' +
+      '<button type="button" class="product-card" data-id="' + esc(p.id) + '" ' +
+              'aria-label="View details for ' + esc(p.name) + ', item code ' + esc(p.itemCode) + '">' +
         '<div class="card-media">' + badge +
           '<img src="' + p.images[0] + '" alt="' + esc(p.name) + '" ' +
                'loading="lazy" decoding="async" width="600" height="690" />' +
@@ -801,7 +1034,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
           '<span class="card-code">' + esc(p.itemCode) + '</span>' +
           '<div class="card-price">' + money(p.price) + original + '</div>' +
         '</div>' +
-      '</article>';
+      '</button>';
   }
 
   /* ============================================================
@@ -829,6 +1062,140 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
         (state.query ? ' matching "<strong>' + esc(state.query) + '</strong>"' : '');
     }
   }
+
+  /* ============================================================
+     PRODUCT DETAIL MODAL
+     ============================================================ */
+  var modal = $('#productModal');
+  var panel = modal.querySelector('.modal-panel');
+  var lastFocus = null;
+
+  function openProduct(id) {
+    var p = PRODUCTS.find(function (x) { return x.id === id; });
+    if (!p) return;
+
+    lastFocus = document.activeElement;
+
+    /* Badge */
+    var badgeEl = $('#pdBadge');
+    if (p.badge) {
+      badgeEl.hidden = false;
+      badgeEl.textContent = p.badge;
+      badgeEl.className = 'pd-badge' + (p.badge.toLowerCase() === 'new' ? ' is-new' : '');
+    } else {
+      badgeEl.hidden = true;
+    }
+
+    /* Core fields */
+    $('#pdCategory').textContent = CATEGORY_LABELS[p.category];
+    $('#pdTitle').textContent = p.name;
+    $('#pdCode').textContent = p.itemCode;
+    $('#pdDesc').textContent = p.description;
+    $('#pdMetaCategory').textContent = CATEGORY_LABELS[p.category];
+    $('#pdMetaAvailability').textContent = p.available ? 'Available' : 'Currently unavailable';
+
+    /* Price block */
+    var priceHTML = '<span class="now">' + money(p.price) + '</span>';
+    if (p.originalPrice && p.originalPrice > p.price) {
+      var off = Math.round((1 - p.price / p.originalPrice) * 100);
+      priceHTML += '<span class="was">' + money(p.originalPrice) + '</span>';
+      priceHTML += '<span class="off">' + off + '% off</span>';
+    }
+    $('#pdPrice').innerHTML = priceHTML;
+
+    /* Options / variants */
+    var vRow = $('#pdVariantRow');
+    var vWrap = $('#pdOptions');
+    if (p.variants && p.variants.length) {
+      vRow.hidden = false;
+      vWrap.innerHTML = p.variants.map(function (v) {
+        return '<span>' + esc(v) + '</span>';
+      }).join('');
+    } else {
+      vRow.hidden = true;
+      vWrap.innerHTML = '';
+    }
+
+    /* Gallery */
+    var main = $('#pdImage');
+    main.src = p.images[0];
+    main.alt = p.name + ' — ' + p.itemCode;
+
+    var thumbs = $('#pdThumbs');
+    thumbs.innerHTML = '';
+
+    p.images.forEach(function (src, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'pd-thumb' + (i === 0 ? ' is-active' : '');
+      b.setAttribute('aria-label', 'View image ' + (i + 1) + ' of ' + p.images.length);
+      b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.width = 66;
+      img.height = 80;
+
+      b.appendChild(img);
+      b.addEventListener('click', function () {
+        main.src = src;
+        main.alt = p.name + ' — image ' + (i + 1);
+        $$('.pd-thumb', thumbs).forEach(function (t) {
+          t.classList.remove('is-active');
+          t.setAttribute('aria-pressed', 'false');
+        });
+        b.classList.add('is-active');
+        b.setAttribute('aria-pressed', 'true');
+      });
+
+      thumbs.appendChild(b);
+    });
+
+    /* Open */
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
+    panel.scrollTop = 0;
+
+    var closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeProduct() {
+    if (!modal.classList.contains('is-open')) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  /* Focus trap inside the modal */
+  modal.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+
+    var focusables = $$(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      modal
+    ).filter(function (el) {
+      return !el.disabled && el.offsetParent !== null;
+    });
+
+    if (!focusables.length) return;
+
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
 
   /* ============================================================
      EVENTS
@@ -869,6 +1236,23 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--teal)}
     $('#sortSelect').value = 'featured';
     renderChips();
     renderGrid();
+  });
+
+  /* Click a product card → open details */
+  $('#productGrid').addEventListener('click', function (e) {
+    var card = e.target.closest('.product-card');
+    if (!card) return;
+    openProduct(card.getAttribute('data-id'));
+  });
+
+  /* Close modal — backdrop & close button */
+  $$('[data-close-modal]').forEach(function (el) {
+    el.addEventListener('click', closeProduct);
+  });
+
+  /* Close modal — Escape key */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeProduct();
   });
 
   /* ============================================================
