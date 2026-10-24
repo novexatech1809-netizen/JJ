@@ -59,6 +59,14 @@ body{
 
 body.no-scroll{overflow:hidden}
 body.is-loading{overflow:hidden}
+body.is-locked{overflow:hidden}
+
+/* While locked, hide the site behind the password gate */
+body.is-locked .topbar,
+body.is-locked .site-header,
+body.is-locked main,
+body.is-locked .site-footer,
+body.is-locked .wa-float{visibility:hidden}
 
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -84,7 +92,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 
 /* ============================================================
-   PAGE LOADER + FLOWERS
+   PAGE LOADER  (flowers removed)
    ============================================================ */
 .page-loader{
   position:fixed;inset:0;z-index:1000;
@@ -97,58 +105,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 .page-loader.is-hidden{
   opacity:0;visibility:hidden;pointer-events:none;
 }
-
-.loader-flowers{
-  position:absolute;inset:0;
-  overflow:hidden;pointer-events:none;
-  z-index:0;
-}
-
-.flower{
-  position:absolute;
-  width:var(--size,44px);
-  height:var(--size,44px);
-  opacity:0;
-  will-change:transform,opacity;
-}
-.flower svg{width:100%;height:100%;display:block}
-
-.flower-left{
-  animation:flowerEnterLeft 1.6s cubic-bezier(.34,1.2,.64,1) var(--delay,0s) forwards;
-}
-.flower-right{
-  animation:flowerEnterRight 1.6s cubic-bezier(.34,1.2,.64,1) var(--delay,0s) forwards;
-}
-
-@keyframes flowerEnterLeft{
-  0%{transform:translate(-80vw,20px) rotate(-200deg) scale(.15);opacity:0}
-  70%{opacity:.85}
-  100%{transform:translate(0,0) rotate(0) scale(1);opacity:.85}
-}
-@keyframes flowerEnterRight{
-  0%{transform:translate(80vw,20px) rotate(200deg) scale(.15);opacity:0}
-  70%{opacity:.85}
-  100%{transform:translate(0,0) rotate(0) scale(1);opacity:.85}
-}
-
-.flower-inner{
-  width:100%;height:100%;
-  animation:flowerFloat 4.2s ease-in-out infinite;
-  animation-delay:calc(var(--delay,0s) + 1.6s);
-}
-@keyframes flowerFloat{
-  0%,100%{transform:translateY(0) rotate(0)}
-  50%{transform:translateY(-10px) rotate(8deg)}
-}
-
-.flower-left-1{ left:4%; top:16%; --delay:.05s; --size:56px; }
-.flower-left-2{ left:10%; top:52%; --delay:.35s; --size:38px; }
-.flower-left-3{ left:2%; top:74%; --delay:.55s; --size:48px; }
-.flower-left-4{ left:16%; top:34%; --delay:.85s; --size:30px; }
-.flower-right-1{ right:4%; top:20%; --delay:.15s; --size:52px; }
-.flower-right-2{ right:10%; top:58%; --delay:.45s; --size:36px; }
-.flower-right-3{ right:3%; top:78%; --delay:.70s; --size:44px; }
-.flower-right-4{ right:16%; top:38%; --delay:.95s; --size:28px; }
 
 .loader-inner{
   position:relative;z-index:1;
@@ -245,6 +201,161 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 @keyframes loaderRing{
   0%,100%{transform:scale(1);opacity:.55}
   50%{transform:scale(1.06);opacity:1}
+}
+
+/* ============================================================
+   PASSWORD GATE
+   ============================================================ */
+.password-gate{
+  position:fixed;inset:0;z-index:900;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  overflow-y:auto;
+  background:
+    radial-gradient(ellipse at 50% 40%, #FFFFFF 0%, #F4FBFD 100%);
+  transition:opacity .6s ease, visibility .6s ease;
+}
+.password-gate.is-hidden{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.password-card{
+  position:relative;
+  width:min(420px, 100%);
+  margin:auto;
+  background:#fff;
+  border:1px solid var(--line-strong);
+  border-radius:4px;
+  padding:48px 36px 40px;
+  text-align:center;
+  overflow:hidden;
+  box-shadow:
+    0 40px 80px -30px rgba(23,40,61,.28),
+    0 4px 20px -10px rgba(19,191,234,.22);
+}
+.password-card::before{
+  content:"";
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--cyan),var(--gold));
+}
+
+.password-logo{
+  position:relative;
+  width:76px;height:76px;
+  margin:0 auto 22px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:linear-gradient(140deg,#fff,#F4FBFD);
+  border:1px solid var(--line-strong);
+  padding:10px;
+  overflow:hidden;
+  box-shadow:0 12px 30px -14px rgba(19,191,234,.55);
+}
+.password-logo img{
+  max-width:100%;max-height:100%;
+  width:auto;height:auto;
+  object-fit:contain;
+  border-radius:50%;
+  display:block;
+}
+.password-logo-fallback{
+  font-family:var(--serif);
+  font-size:26px;
+  color:var(--navy);
+  display:none;
+}
+.password-logo.no-logo .password-logo-fallback{display:block}
+
+.password-title{
+  margin:0 0 6px;
+  font-family:var(--serif);
+  font-size:24px;
+  font-weight:500;
+  color:var(--navy);
+  letter-spacing:-.005em;
+}
+.password-sub{
+  margin:0 0 20px;
+  font-size:10.5px;
+  font-weight:500;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--cyan-dark);
+}
+.password-message{
+  margin:0 0 24px;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--body);
+}
+
+.password-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.password-input{
+  width:100%;
+  height:48px;
+  padding:0 18px;
+  border:1px solid var(--line-strong);
+  border-radius:2px;
+  background:var(--bg);
+  font:inherit;
+  font-size:15px;
+  color:var(--navy);
+  text-align:center;
+  letter-spacing:.04em;
+  transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.password-input::placeholder{
+  color:#9AAEBD;
+  letter-spacing:.02em;
+}
+.password-input:focus{
+  outline:none;
+  background:#fff;
+  border-color:var(--cyan);
+  box-shadow:0 0 0 4px rgba(19,191,234,.14);
+}
+.password-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:48px;
+  padding:0 24px;
+  border:none;
+  border-radius:2px;
+  background:var(--cyan);
+  color:var(--navy);
+  font:inherit;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .2s ease, color .2s ease, transform .2s ease;
+}
+.password-btn:hover{background:var(--cyan-dark);color:#fff}
+.password-btn:active{transform:translateY(1px)}
+
+.password-error{
+  min-height:18px;
+  margin:6px 0 0;
+  font-size:12.5px;
+  color:var(--orange);
+  letter-spacing:.02em;
+}
+
+.password-gate.is-shaking .password-card{
+  animation:gateShake .4s ease;
+}
+@keyframes gateShake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-8px)}
+  75%{transform:translateX(8px)}
 }
 
 /* ============================================================
@@ -1300,9 +1411,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   .modal-name{font-size:22px}
   .modal-price .now{font-size:18px}
 
-  .flower-left-1,.flower-left-4,.flower-right-1,.flower-right-4{display:none}
-  .flower{--size:28px !important}
-
   .site-footer{padding:48px 0 0}
   .footer-top{grid-template-columns:1fr;gap:34px;padding-bottom:40px}
   .footer-brand-block{max-width:none}
@@ -1319,6 +1427,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   .wa-float-btn{width:54px;height:54px}
   .wa-float-btn svg{width:26px;height:26px}
   .wa-float-label{display:none}
+
+  .password-card{padding:36px 24px 32px}
+  .password-title{font-size:21px}
 }
 
 @media (max-width:400px){
@@ -1337,21 +1448,10 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 }
 </style>
 </head>
-<body class="is-loading">
+<body class="is-loading is-locked">
 
-<!-- ============ PAGE LOADER ============ -->
+<!-- ============ PAGE LOADER (no flowers) ============ -->
 <div class="page-loader" id="pageLoader" role="status" aria-live="polite" aria-label="Loading catalogue">
-  <div class="loader-flowers" aria-hidden="true">
-    <div class="flower flower-left flower-left-1"><div class="flower-inner"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(50 50)"><g fill="#7DD9F0"><ellipse cx="0" cy="-22" rx="12" ry="18"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(72)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(144)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(216)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(288)"/></g><circle r="7" fill="#FFC928"/></g></svg></div></div>
-    <div class="flower flower-left flower-left-2"><div class="flower-inner"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(50 50)"><g fill="#A5E9F7"><ellipse cx="0" cy="-22" rx="12" ry="18"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(72)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(144)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(216)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(288)"/></g><circle r="7" fill="#FFC928"/></g></svg></div></div>
-    <div class="flower flower-left flower-left-3"><div class="flower-inner"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(50 50)"><g fill="#5FD0EA"><ellipse cx="0" cy="-22" rx="12" ry="18"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(72)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(144)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(216)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(288)"/></g><circle r="7" fill="#FFC928"/></g></svg></div></div>
-    <div class="flower flower-left flower-left-4"><div class="flower-inner"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(50 50)"><g fill="#7DD9F0"><ellipse cx="0" cy="-22" rx="12" ry="18"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(72)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(144)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(216)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(288)"/></g><circle r="7" fill="#FFC928"/></g></svg></div></div>
-    <div class="flower flower-right flower-right-1"><div class="flower-inner"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(50 50)"><g fill="#A5E9F7"><ellipse cx="0" cy="-22" rx="12" ry="18"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(72)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(144)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(216)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(288)"/></g><circle r="7" fill="#FFC928"/></g></svg></div></div>
-    <div class="flower flower-right flower-right-2"><div class="flower-inner"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(50 50)"><g fill="#7DD9F0"><ellipse cx="0" cy="-22" rx="12" ry="18"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(72)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(144)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(216)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(288)"/></g><circle r="7" fill="#FFC928"/></g></svg></div></div>
-    <div class="flower flower-right flower-right-3"><div class="flower-inner"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(50 50)"><g fill="#5FD0EA"><ellipse cx="0" cy="-22" rx="12" ry="18"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(72)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(144)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(216)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(288)"/></g><circle r="7" fill="#FFC928"/></g></svg></div></div>
-    <div class="flower flower-right flower-right-4"><div class="flower-inner"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g transform="translate(50 50)"><g fill="#A5E9F7"><ellipse cx="0" cy="-22" rx="12" ry="18"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(72)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(144)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(216)"/><ellipse cx="0" cy="-22" rx="12" ry="18" transform="rotate(288)"/></g><circle r="7" fill="#FFC928"/></g></svg></div></div>
-  </div>
-
   <div class="loader-inner">
     <div class="loader-logo">
       <img class="loader-logo-img" src="Logo.png" alt="" onerror="this.classList.add('is-hidden');this.parentElement.classList.add('no-logo');" />
@@ -1369,6 +1469,34 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
     body.is-loading{overflow:auto !important}
   </style>
 </noscript>
+
+<!-- ============ PASSWORD GATE ============ -->
+<div class="password-gate" id="passwordGate" role="dialog" aria-modal="true" aria-labelledby="passwordTitle">
+  <div class="password-card">
+    <div class="password-logo">
+      <img src="Logo.png" alt="" onerror="this.style.display='none';this.parentElement.classList.add('no-logo');" />
+      <span class="password-logo-fallback" aria-hidden="true">BB</span>
+    </div>
+
+    <h2 class="password-title" id="passwordTitle">B. Basharat &amp; Brothers</h2>
+    <p class="password-sub">Private Catalogue</p>
+    <p class="password-message">This catalogue is private. Enter the password to view the collection.</p>
+
+    <form class="password-form" id="passwordForm" autocomplete="off">
+      <label class="visually-hidden" for="passwordInput">Password</label>
+      <input
+        type="password"
+        id="passwordInput"
+        class="password-input"
+        placeholder="Enter password"
+        autocomplete="current-password"
+        required
+      />
+      <button type="submit" class="password-btn">Unlock Catalogue</button>
+      <p class="password-error" id="passwordError" role="alert"></p>
+    </form>
+  </div>
+</div>
 
 <a class="skip-link" href="#catalogue">Skip to catalogue</a>
 
@@ -1721,7 +1849,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   var loader = document.getElementById('pageLoader');
   if (!loader) return;
 
-  var MIN = 1700;
+  var MIN = 1200;
   var start = (window.performance && performance.now) ? performance.now() : Date.now();
   var done = false;
 
@@ -1743,8 +1871,57 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   if (document.readyState === 'complete') hideLoader();
   else {
     window.addEventListener('load', hideLoader);
-    setTimeout(hideLoader, 7000);
+    setTimeout(hideLoader, 6000);
   }
+})();
+</script>
+
+<!-- ============================================================
+     PASSWORD GATE SCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  var gate = document.getElementById('passwordGate');
+  var form = document.getElementById('passwordForm');
+  var input = document.getElementById('passwordInput');
+  var error = document.getElementById('passwordError');
+  if (!gate || !form || !input) return;
+
+  /* The required password (case-insensitive) */
+  var PASSWORD = 'ibrahim';
+
+  function unlock() {
+    document.body.classList.remove('is-locked');
+    gate.classList.add('is-hidden');
+    gate.setAttribute('aria-hidden', 'true');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var value = (input.value || '').trim().toLowerCase();
+
+    if (value === PASSWORD) {
+      error.textContent = '';
+      unlock();
+    } else {
+      error.textContent = 'Incorrect password. Please try again.';
+      gate.classList.remove('is-shaking');
+      void gate.offsetWidth; /* restart animation */
+      gate.classList.add('is-shaking');
+      input.value = '';
+      input.focus();
+    }
+  });
+
+  /* Auto-focus the input after the loader fades */
+  setTimeout(function () {
+    if (document.body.classList.contains('is-locked')) {
+      input.focus();
+    }
+  }, 1500);
 })();
 </script>
 
