@@ -754,7 +754,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 .modal-name{
   margin:0 0 16px;font-family:var(--serif);
   font-size:26px;line-height:1.2;letter-spacing:-.005em;color:var(--navy);
-  /* smooth crossfade when the image (and therefore the name) changes */
   transition:opacity .3s ease;
 }
 .modal-name.is-switching{opacity:0;}
@@ -1572,31 +1571,52 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   var WHATSAPP_NUMBER = '923323586411';
 
   /* ============================================================
-     IMAGE HELPERS
-     ────────────────────────────────────────────────────────────
-     Each entry in `images` can be either:
-
-       (A) a plain STRING (backward compatible):
-             'images/Earings/1.jpg'
-           → uses the product's main `name` as the title
-
-       (B) an OBJECT with its own title:
-             { src: 'images/Earings/2.jpg', name: 'Gold-Tone — Side View' }
-           → the modal title changes to this name when the
-             user navigates to this image.
-
-     ▸ HELPER:  iv(src, name)  — quick way to build a titled image
-
-     ▸ SUPPORTED IMAGE FORMATS
-         .jpg   .jpeg   .png   .webp   .avif   .gif   .svg
+     ╔══════════════════════════════════════════════════════════╗
+     ║  ⚠  GITHUB PAGES IMAGE TROUBLESHOOTING                   ║
+     ╠══════════════════════════════════════════════════════════╣
+     ║  If images don't show after publishing on GitHub Pages,  ║
+     ║  check these 6 things (in order):                        ║
+     ║                                                          ║
+     ║  1. FOLDER NAME MATCHES EXACTLY (case-sensitive!)        ║
+     ║     • 'images/Earrings/1.jpg'  ✓                         ║
+     ║     • 'images/Earings/1.jpg'   ✗ (missing an 'r')        ║
+     ║     • 'images/earrings/1.jpg'  ✗ (lowercase ≠ uppercase) ║
+     ║                                                          ║
+     ║  2. FILE NAME MATCHES EXACTLY (case-sensitive!)          ║
+     ║     • '1.jpg'  ✓    • '1.JPG'  ✗    • 'img1.jpg' ✗       ║
+     ║                                                          ║
+     ║  3. FILE EXTENSION is .jpg / .jpeg / .png / .webp        ║
+     ║                                                          ║
+     ║  4. IMAGES ACTUALLY PUSHED to GitHub                     ║
+     ║     (open the repo, click the folder, see the files)     ║
+     ║                                                          ║
+     ║  5. NO SPACES in folder or file names                    ║
+     ║     • 'my photo.jpg'  ✗  →  'my-photo.jpg'  ✓            ║
+     ║                                                          ║
+     ║  6. RELATIVE PATH from HTML file                         ║
+     ║     • HTML at root + images/ folder at root              ║
+     ║       → 'images/earrings/1.jpg'  ✓                       ║
+     ╚══════════════════════════════════════════════════════════╝
      ============================================================ */
 
-  /* Build an image variant { src, name } */
+  /* ============================================================
+     IMAGE HELPERS
+     ────────────────────────────────────────────────────────────
+     Each entry in `images` can be:
+       (A) a plain STRING: 'images/Earrings/1.jpg'
+       (B) an OBJECT with its own title:
+           { src: 'images/Earrings/2.jpg', name: 'Gold — Side View' }
+
+     Shortcut helper: iv(src, name)
+
+     Supported image formats:
+       .jpg  .jpeg  .png  .webp  .avif  .gif  .svg
+     ============================================================ */
+
   function iv(src, name) {
     return { src: src, name: name };
   }
 
-  /* Inline SVG placeholder — used when you don't have photos yet */
   function ph(label) {
     var svg =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 690">' +
@@ -1609,45 +1629,56 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
         '<rect width="600" height="690" fill="url(#g)"/>' +
         '<circle cx="300" cy="345" r="150" fill="#13BFEA" opacity="0.10"/>' +
         '<circle cx="300" cy="345" r="100" fill="#13BFEA" opacity="0.14"/>' +
-        '<text x="300" y="360" font-family="Georgia, serif" font-size="42" ' +
+        '<text x="300" y="355" font-family="Georgia, serif" font-size="38" ' +
               'fill="#17283D" text-anchor="middle" font-style="italic">' + label + '</text>' +
-        '<text x="300" y="410" font-family="sans-serif" font-size="12" ' +
-              'letter-spacing="6" fill="#7A91A3" text-anchor="middle">PHOTO</text>' +
+        '<text x="300" y="405" font-family="sans-serif" font-size="11" ' +
+              'letter-spacing="6" fill="#7A91A3" text-anchor="middle">NO IMAGE</text>' +
+        '<text x="300" y="430" font-family="sans-serif" font-size="10" ' +
+              'letter-spacing="3" fill="#9AAEBD" text-anchor="middle">CHECK PATH IN CODE</text>' +
       '</svg>';
     return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
   }
 
-  /* Extract the src from an image entry (string OR object) */
   function imgSrc(img) {
     if (!img) return '';
     return typeof img === 'string' ? img : (img.src || '');
   }
 
-  /* Extract the title from an image entry, falling back to product name */
   function imgName(img, product) {
     if (img && typeof img === 'object' && img.name) return img.name;
     return product ? product.name : '';
   }
 
   /* ============================================================
+     ▸▸▸  ATTACH IMAGE FALLBACK  ◂◂◂
+     Ensures a clean branded placeholder appears if the image
+     fails to load — instead of a broken-image icon.
+     ============================================================ */
+  function ensureImageFallback(imgEl, src, label) {
+    var fallback = ph(label || 'Image');
+
+    imgEl.onerror = function () {
+      imgEl.onerror = null;
+      imgEl.src = fallback;
+    };
+
+    imgEl.src = src;
+
+    /* If the image already failed before we attached the handler,
+       catch that case too: */
+    if (imgEl.complete && imgEl.naturalWidth === 0) {
+      imgEl.onerror = null;
+      imgEl.src = fallback;
+    }
+  }
+
+  /* ============================================================
      PRODUCTS — EDIT BELOW
      ────────────────────────────────────────────────────────────
-
-     ▸ To give a specific image its own title, wrap it like this:
-
-         { src: 'images/Earings/2.jpg', name: 'Gold-Tone — Side View' }
-
-       Or use the shortcut helper:
-
-         iv('images/Earings/2.jpg', 'Gold-Tone — Side View')
-
-     ▸ A plain string still works and keeps the product's main name:
-
-         'images/Earings/1.jpg'
-
-     ▸ images[0] is used on the product card.
-     ▸ All images appear in the modal gallery; the modal
-       title switches to each image's own name.
+     Make sure each file path matches EXACTLY (case-sensitive):
+       ✓  images/Earrings/1.jpg
+       ✗  images/Earings/1.jpg    (missing an 'r')
+       ✗  images/earrings/1.jpg   (different case)
      ============================================================ */
   var PRODUCTS = [
 
@@ -1661,7 +1692,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
       originalPrice: 1000,
       description: 'A classic set of gold-tone bangles with a fine engraved finish.',
 
-      /* 👇 Each image gets its own title shown in the modal 👇 */
+      /* ⚠ Make sure your folder is exactly "Earings" (as written here)
+           — if your folder is actually called "Earrings", rename it
+             in the paths below to match. */
       images: [
         iv('images/Earings/1.jpg', 'Traditional Gold-Tone Bangles'),
         iv('images/Earings/2.jpg', 'Traditional Brown-Tone Bangles'),
@@ -1960,7 +1993,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
       ? '<s>' + money(p.originalPrice) + '</s>'
       : '';
 
-    /* The card uses the first image's src and the product's main name */
     var firstSrc = imgSrc(p.images[0]);
 
     return '' +
@@ -1981,7 +2013,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   }
 
   /* ============================================================
-     RENDER: GRID
+     RENDER: GRID (with image fallback for every card)
      ============================================================ */
   function renderGrid() {
     var list = getVisibleProducts();
@@ -1990,6 +2022,17 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
     var count = $('#resultCount');
 
     grid.innerHTML = list.map(cardHTML).join('');
+
+    /* Attach fallback to every product card image so a missing
+       file shows a branded placeholder instead of a broken icon */
+    $$('.product-card', grid).forEach(function (card) {
+      var pid = card.getAttribute('data-id');
+      var prod = list.find(function (p) { return p.id === pid; });
+      var img = card.querySelector('.card-media img');
+      if (prod && img) {
+        ensureImageFallback(img, img.getAttribute('src'), prod.itemCode);
+      }
+    });
 
     if (!list.length) {
       empty.hidden = false;
@@ -2031,7 +2074,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
     var prevBtn = $('#pdPrev');
     var nextBtn = $('#pdNext');
 
-    /* Price stays the same for all images of this product */
     var priceHTML = '<span class="now">' + money(p.price) + '</span>';
     if (p.originalPrice && p.originalPrice > p.price) {
       var off = Math.round((1 - p.price / p.originalPrice) * 100);
@@ -2057,14 +2099,14 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
         mainImg.classList.add('is-switching');
         titleEl.classList.add('is-switching');
         window.setTimeout(function () {
-          mainImg.src = newSrc;
+          ensureImageFallback(mainImg, newSrc, p.itemCode);
           mainImg.alt = newName;
           titleEl.textContent = newName;
           mainImg.classList.remove('is-switching');
           titleEl.classList.remove('is-switching');
         }, 160);
       } else {
-        mainImg.src = newSrc;
+        ensureImageFallback(mainImg, newSrc, p.itemCode);
         mainImg.alt = newName;
         titleEl.textContent = newName;
       }
@@ -2090,12 +2132,12 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
       b.setAttribute('title', label);
 
       var thumbImg = document.createElement('img');
-      thumbImg.src = imgSrc(imgEntry);
       thumbImg.alt = '';
       thumbImg.loading = 'lazy';
       thumbImg.decoding = 'async';
       thumbImg.width = 58;
       thumbImg.height = 72;
+      ensureImageFallback(thumbImg, imgSrc(imgEntry), p.itemCode);
 
       b.appendChild(thumbImg);
       b.addEventListener('click', function () { showImage(i); });
@@ -2103,7 +2145,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
     });
 
     /* First image active by default */
-    mainImg.src = imgSrc(images[0]);
+    ensureImageFallback(mainImg, imgSrc(images[0]), p.itemCode);
     var firstTitle = imgName(images[0], p);
     mainImg.alt = firstTitle;
     titleEl.textContent = firstTitle;
