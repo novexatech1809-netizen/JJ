@@ -601,7 +601,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   margin-top:auto;padding-top:8px;
   font-size:15px;font-weight:500;color:var(--navy);
 }
-.card-price s{font-size:12.5px;font-weight:400;color:#A7B8C4}
 
 .card-view{
   margin-top:10px;padding-top:12px;
@@ -637,11 +636,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 }
 .catalogue-note strong{color:#4A3D12}
 
-/* ============================================================
-   PRODUCT DETAIL MODAL — ATTRACTIVE PICTURE-CARD LAYOUT
-   ▸ No arrows — click a thumbnail to change the photo + title
-   ▸ No × close button — click the backdrop or press Escape
-   ============================================================ */
+/* PRODUCT MODAL */
 .modal{
   position:fixed;inset:0;z-index:500;
   display:grid;place-items:center;
@@ -681,7 +676,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   border-radius:8px 8px 0 0;z-index:5;pointer-events:none;
 }
 
-/* Image stage */
 .pd-gallery{position:relative;}
 
 .pd-image-stage{
@@ -697,7 +691,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 }
 .pd-image.is-switching{opacity:0;transform:scale(1.04);}
 
-/* Counter pill */
 .pd-counter{
   position:absolute;top:18px;right:18px;z-index:3;
   display:inline-flex;align-items:center;gap:7px;
@@ -712,7 +705,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 }
 .pd-counter .pd-counter-current{color:var(--cyan-soft)}
 
-/* Thumbnails strip — the ONLY navigation */
 .pd-thumbs{
   display:flex;
   justify-content:center;
@@ -761,7 +753,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
     0 12px 26px -14px rgba(23,40,61,.45);
 }
 
-/* Content below the gallery */
 .modal-content{
   padding:28px 34px 36px;
   text-align:center;
@@ -808,15 +799,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 .modal-price .now{
   font-size:22px;font-weight:600;color:var(--navy);
   letter-spacing:-.005em;
-}
-.modal-price .was{
-  font-size:14px;color:var(--muted);text-decoration:line-through;
-}
-.modal-price .off{
-  padding:4px 10px;border-radius:3px;
-  background:var(--orange);color:#fff;
-  font-size:10px;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;
 }
 
 /* FOOTER */
@@ -1085,7 +1067,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   .card-name{font-size:16px}
   .card-body{padding:12px 12px 14px}
 
-  /* Modal on mobile */
   .modal{padding:12px}
   .modal-panel{width:100%;max-height:calc(100vh - 24px);border-radius:6px;}
   .pd-image-stage{aspect-ratio:1/1.05}
@@ -1096,7 +1077,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   .modal-name{font-size:23px;margin-bottom:16px}
   .modal-price{padding:10px 16px;gap:10px}
   .modal-price .now{font-size:19px}
-  .modal-price .was{font-size:13px}
 
   .site-footer{padding:48px 0 0}
   .footer-top{grid-template-columns:1fr;gap:34px;padding-bottom:40px}
@@ -1126,12 +1106,10 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
   .hero-slide .slide-bg{transform:scale(1) !important}
   .wa-float-btn::before,.wa-float-btn::after{display:none}
 }
-/* ============================================================
-   B. Basharat & Brothers — Design Upgrade Layer
-   Loads AFTER the existing <style>. No HTML/JS changes needed.
-   Same theme (cyan / gold / navy), same functionality.
-   ============================================================ */
 
+/* ============================================================
+   Design Upgrade Layer (unchanged)
+   ============================================================ */
 :root{
   --radius:14px;
   --radius-lg:22px;
@@ -1144,13 +1122,11 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:500}
 body{background:var(--bg);letter-spacing:.005em}
 h1,h2,h3,h4{letter-spacing:-.012em}
 
-/* Custom scrollbar */
 html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
 ::-webkit-scrollbar{width:10px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--cyan),var(--cyan-dark));border-radius:10px;border:2px solid var(--bg)}
 
-/* ---------- Top bar ---------- */
 .topbar{
   background:linear-gradient(90deg,var(--navy-deep),var(--navy) 50%,var(--navy-deep));
   border-bottom:1px solid rgba(255,201,40,.18);
@@ -1158,35 +1134,22 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
 .topbar-inner{font-size:11px;letter-spacing:.18em}
 .topbar-dot{width:5px;height:5px;transform:rotate(45deg);border-radius:1px}
 
-/* ---------- Header ---------- */
 .site-header{
   background:rgba(255,255,255,.88);
   -webkit-backdrop-filter:saturate(180%) blur(18px);
   backdrop-filter:saturate(180%) blur(18px);
   box-shadow:0 10px 30px -22px rgba(23,40,61,.35);
 }
-.brand-logo-wrap{
-  border-radius:14px;
-  transition:transform .35s var(--ease),box-shadow .35s ease;
-}
+.brand-logo-wrap{border-radius:14px;transition:transform .35s var(--ease),box-shadow .35s ease;}
 .brand:hover .brand-logo-wrap{transform:translateY(-1px) rotate(-1deg);box-shadow:0 14px 26px -14px rgba(19,191,234,.6)}
 .brand-name{font-size:22px;font-weight:600}
 .brand-sub{color:var(--cyan-dark);font-weight:500}
 
-.header-search input{
-  height:50px;background:#fff;
-  box-shadow:var(--shadow-sm);
-  border-color:var(--line-strong);
-}
+.header-search input{height:50px;background:#fff;box-shadow:var(--shadow-sm);border-color:var(--line-strong);}
 .header-search input:hover{border-color:var(--cyan-soft)}
 .header-search input:focus{box-shadow:0 0 0 5px rgba(19,191,234,.16),var(--shadow-md)}
 
-/* ---------- Hero ---------- */
-.hero-carousel{
-  margin:0;
-  border-radius:0 0 var(--radius-lg) var(--radius-lg);
-  box-shadow:var(--shadow-lg);
-}
+.hero-carousel{margin:0;border-radius:0 0 var(--radius-lg) var(--radius-lg);box-shadow:var(--shadow-lg);}
 .slide-overlay{
   background:
     radial-gradient(ellipse at 20% 100%, rgba(19,191,234,.22), transparent 55%),
@@ -1201,16 +1164,8 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
 }
 .slide-eyebrow::before{left:14px}
-.slide-title{
-  font-size:clamp(38px,5.4vw,70px);
-  font-weight:500;line-height:1.02;
-  text-shadow:0 6px 30px rgba(0,0,0,.35);
-}
-.slide-title em{
-  background:linear-gradient(90deg,var(--cyan-tint),var(--gold));
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
-}
+.slide-title{font-size:clamp(38px,5.4vw,70px);font-weight:500;line-height:1.02;text-shadow:0 6px 30px rgba(0,0,0,.35);}
+.slide-title em{background:linear-gradient(90deg,var(--cyan-tint),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
 .slide-desc{font-size:17px;color:rgba(255,255,255,.88)}
 .btn{border-radius:999px}
 .slide-actions .btn{padding:15px 32px}
@@ -1219,42 +1174,28 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
   border-color:transparent;color:var(--navy-deep);font-weight:600;
   box-shadow:0 14px 28px -12px rgba(19,191,234,.8);
 }
-.btn-primary:hover{
-  background:linear-gradient(135deg,#fff,var(--cyan-tint));
-  box-shadow:0 18px 34px -12px rgba(255,255,255,.5);
-}
+.btn-primary:hover{background:linear-gradient(135deg,#fff,var(--cyan-tint));box-shadow:0 18px 34px -12px rgba(255,255,255,.5);}
 .slide-price{
   padding:10px 20px;border-radius:999px;margin-left:4px;
-  background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
   font-size:21px;
 }
-.carousel-arrow{
-  width:52px;height:52px;border-color:rgba(255,255,255,.35);
-  background:rgba(10,21,32,.40);
-}
-.carousel-arrow:hover{
-  background:linear-gradient(135deg,var(--cyan),var(--cyan-dark));
-  border-color:transparent;box-shadow:0 12px 26px -10px rgba(19,191,234,.8);
-}
+.carousel-arrow{width:52px;height:52px;border-color:rgba(255,255,255,.35);background:rgba(10,21,32,.40);}
+.carousel-arrow:hover{background:linear-gradient(135deg,var(--cyan),var(--cyan-dark));border-color:transparent;box-shadow:0 12px 26px -10px rgba(19,191,234,.8);}
 .carousel-counter{
-  padding:8px 16px;border-radius:999px;
-  background:rgba(10,21,32,.45);
+  padding:8px 16px;border-radius:999px;background:rgba(10,21,32,.45);
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
   border:1px solid rgba(255,255,255,.15);
 }
 .carousel-dot{height:4px;border-radius:4px}
 .carousel-dot.is-active{box-shadow:0 0 12px rgba(255,201,40,.7)}
 
-/* ---------- Intro ---------- */
 .intro{border-bottom:none;padding:56px 0 8px;background:transparent}
 .intro-inner{
-  padding:34px 40px;
-  background:#fff;
+  padding:34px 40px;background:#fff;
   border:1px solid var(--line);border-radius:var(--radius-lg);
-  box-shadow:var(--shadow-md);
-  position:relative;overflow:hidden;
+  box-shadow:var(--shadow-md);position:relative;overflow:hidden;
 }
 .intro-inner::before{
   content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
@@ -1262,15 +1203,11 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
 }
 .intro-inner::after{
   content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;
-  background:radial-gradient(circle,rgba(19,191,234,.14),transparent 70%);
-  pointer-events:none;
+  background:radial-gradient(circle,rgba(19,191,234,.14),transparent 70%);pointer-events:none;
 }
 .intro-text h2{font-size:clamp(28px,3vw,40px)}
 .intro-stats{gap:0;position:relative;z-index:1}
-.intro-stats li{
-  align-items:center;text-align:center;
-  padding:6px 30px;
-}
+.intro-stats li{align-items:center;text-align:center;padding:6px 30px;}
 .intro-stats li + li{border-left:1px solid var(--line-strong)}
 .intro-stats strong{
   font-size:38px;font-weight:600;
@@ -1279,36 +1216,22 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
   -webkit-text-fill-color:transparent;color:transparent;
 }
 
-/* ---------- Toolbar ---------- */
 .shop{padding-top:36px;background:transparent}
-.toolbar{
-  padding:14px 16px;
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow-sm);
-}
+.toolbar{padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);}
 .chip{
-  border-radius:999px;padding:10px 20px;
-  background:var(--bg);border-color:transparent;
-  font-weight:500;
-  transition:all .25s var(--ease);
+  border-radius:999px;padding:10px 20px;background:var(--bg);border-color:transparent;
+  font-weight:500;transition:all .25s var(--ease);
 }
 .chip:hover{background:#fff;border-color:var(--cyan-soft);color:var(--cyan-deep);transform:translateY(-1px)}
-.chip.is-active{
-  background:linear-gradient(135deg,var(--navy),#24415F);
-  color:#fff;box-shadow:0 10px 20px -10px rgba(23,40,61,.6);
-}
+.chip.is-active{background:linear-gradient(135deg,var(--navy),#24415F);color:#fff;box-shadow:0 10px 20px -10px rgba(23,40,61,.6);}
 .sort-select{border-radius:999px;height:44px;padding-left:18px;background-color:var(--bg);border-color:transparent}
 .sort-select:hover{border-color:var(--cyan-soft)}
 .result-count{margin-top:22px}
 
-/* ---------- Product cards ---------- */
 .product-grid{gap:30px}
 .product-card{
-  border-radius:var(--radius-lg);
-  border:1px solid var(--line);
-  background:#fff;
-  box-shadow:var(--shadow-sm);
-  animation:cardIn .7s var(--ease) both;
+  border-radius:var(--radius-lg);border:1px solid var(--line);background:#fff;
+  box-shadow:var(--shadow-sm);animation:cardIn .7s var(--ease) both;
   transition:transform .4s var(--ease),box-shadow .4s ease,border-color .3s ease;
 }
 .product-card:nth-child(1){animation-delay:.02s}
@@ -1322,8 +1245,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
 @keyframes cardIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 
 .product-card:hover{
-  transform:translateY(-8px);
-  border-color:var(--cyan-soft);
+  transform:translateY(-8px);border-color:var(--cyan-soft);
   box-shadow:0 30px 50px -26px rgba(19,191,234,.55),0 10px 24px -14px rgba(23,40,61,.25);
 }
 .card-media{margin:10px 10px 0;border-radius:calc(var(--radius-lg) - 6px);aspect-ratio:1/1.1}
@@ -1338,8 +1260,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
 .card-badge{
   top:14px;left:14px;padding:6px 12px;border-radius:999px;
   background:linear-gradient(135deg,#FF9248,var(--orange));
-  box-shadow:0 8px 16px -8px rgba(244,123,32,.8);
-  z-index:2;
+  box-shadow:0 8px 16px -8px rgba(244,123,32,.8);z-index:2;
 }
 .card-badge.gold{background:linear-gradient(135deg,#FFE27A,var(--gold));box-shadow:0 8px 16px -8px rgba(255,201,40,.9)}
 
@@ -1352,29 +1273,19 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
   font-size:11px;letter-spacing:.08em;color:var(--muted);
 }
 .card-price{font-family:var(--serif);font-size:22px;font-weight:600;padding-top:10px}
-.card-price s{font-family:var(--sans);font-size:12.5px}
 .card-view{
   justify-content:center;margin-top:12px;padding:11px 0;
   border:1px solid var(--line-strong);border-radius:999px;
   transition:background .3s ease,color .3s ease,border-color .3s ease;
 }
-.product-card:hover .card-view{
-  background:linear-gradient(135deg,var(--cyan),var(--cyan-dark));
-  border-color:transparent;color:#fff;
-}
+.product-card:hover .card-view{background:linear-gradient(135deg,var(--cyan),var(--cyan-dark));border-color:transparent;color:#fff;}
 
-/* ---------- Empty state / note ---------- */
 .empty-state{border-radius:var(--radius-lg);background:#fff}
-.catalogue-note{
-  border-radius:var(--radius);border-left-width:4px;
-  background:linear-gradient(90deg,#FFF9E3,#FFFDF5);
-}
+.catalogue-note{border-radius:var(--radius);border-left-width:4px;background:linear-gradient(90deg,#FFF9E3,#FFFDF5);}
 
-/* ---------- Product modal ---------- */
 .modal-backdrop{background:rgba(10,21,32,.68);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .modal-panel{
-  width:min(600px,100%);
-  border-radius:var(--radius-lg);
+  width:min(600px,100%);border-radius:var(--radius-lg);
   box-shadow:0 70px 140px -50px rgba(10,21,32,.8),0 10px 40px -14px rgba(19,191,234,.3);
 }
 .modal-panel::before{border-radius:var(--radius-lg) var(--radius-lg) 0 0;height:4px}
@@ -1388,10 +1299,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
 .pd-thumb{border-radius:12px}
 .pd-thumb.is-active{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--cyan),0 14px 26px -14px rgba(19,191,234,.7);border-color:var(--cyan)}
 .modal-content{padding:30px 38px 40px}
-.modal-cat{
-  padding:5px 12px;border-radius:999px;
-  background:rgba(19,191,234,.12);
-}
+.modal-cat{padding:5px 12px;border-radius:999px;background:rgba(19,191,234,.12);}
 .modal-name{font-size:32px;font-weight:600}
 .modal-price{
   border-radius:999px;padding:12px 28px;
@@ -1399,9 +1307,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
   box-shadow:var(--shadow-md);border-color:var(--cyan-tint);
 }
 .modal-price .now{font-family:var(--serif);font-size:26px}
-.modal-price .off{border-radius:999px;background:linear-gradient(135deg,#FF9248,var(--orange))}
 
-/* ---------- Footer ---------- */
 .site-footer{margin-top:20px;border-radius:var(--radius-lg) var(--radius-lg) 0 0}
 .footer-col h4{font-size:12px}
 .footer-links a::before{border-radius:1px;transform:rotate(45deg)}
@@ -1412,10 +1318,8 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
 .footer-social a{transition:all .3s var(--ease)}
 .footer-social a:hover{box-shadow:0 12px 22px -10px rgba(19,191,234,.8)}
 
-/* ---------- Floating WhatsApp ---------- */
 .wa-float-label{border-radius:999px;padding:11px 18px}
 
-/* ---------- Password gate & loader ---------- */
 .password-gate{
   background:
     radial-gradient(ellipse at 15% 20%, rgba(19,191,234,.18), transparent 50%),
@@ -1435,7 +1339,6 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
     linear-gradient(180deg,#fff,var(--bg));
 }
 
-/* ---------- Responsive refinements ---------- */
 @media (max-width:1080px){
   .intro-inner{padding:28px}
   .intro-stats li:first-child{padding-left:0}
@@ -1551,62 +1454,20 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
 
 <main>
 
-  <!-- HERO CAROUSEL -->
+  <!-- HERO CAROUSEL (fixed to existing products) -->
   <section class="hero-carousel" id="heroCarousel" aria-roledescription="carousel" aria-label="Featured jewellery pieces">
 
     <div class="carousel-track">
 
       <div class="hero-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 3">
-        <div class="slide-bg" data-bg-product="bb-br-006"></div>
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <p class="slide-eyebrow">Bridal Collection · BB-BR-006</p>
-          <h2 class="slide-title">A complete set for the <em>big day</em>.</h2>
-          <p class="slide-desc">
-            Statement necklace, matching earrings and a coordinated maang tikka —
-            everything in one occasion-ready look.
-          </p>
-          <div class="slide-actions">
-            <button class="btn btn-primary" type="button" data-product-id="bb-br-006">View piece</button>
-            <a class="btn btn-light" href="#catalogue">
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              See Jewelry
-            </a>
-            <span class="slide-price"><small>Price</small> PKR 125,000</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
-        <div class="slide-bg" data-bg-product="bb-js-002"></div>
-        <div class="slide-overlay"></div>
-        <div class="slide-content">
-          <p class="slide-eyebrow">Jewellery Sets · BB-JS-002</p>
-          <h2 class="slide-title">Pearl elegance, <em>effortlessly</em> coordinated.</h2>
-          <p class="slide-desc">
-            A pearl-accented necklace paired with matching earrings —
-            the polished choice for dinners and formal evenings.
-          </p>
-          <div class="slide-actions">
-            <button class="btn btn-primary" type="button" data-product-id="bb-js-002">View piece</button>
-            <a class="btn btn-light" href="#catalogue">
-              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              See Jewelry
-            </a>
-            <span class="slide-price"><small>Price</small> PKR 42,500</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
         <div class="slide-bg" data-bg-product="bb-bg-001"></div>
         <div class="slide-overlay"></div>
         <div class="slide-content">
           <p class="slide-eyebrow">Bestseller · BB-BG-001</p>
-          <h2 class="slide-title">Traditional bangles, <em>finely</em> engraved.</h2>
+          <h2 class="slide-title">Traditional gold-tone <em>bangles</em>.</h2>
           <p class="slide-desc">
-            A classic gold-tone set designed to sit comfortably every day
-            and to stack beautifully for occasions.
+            A classic set of gold-tone bangles with a fine engraved finish —
+            designed to sit comfortably and stack beautifully.
           </p>
           <div class="slide-actions">
             <button class="btn btn-primary" type="button" data-product-id="bb-bg-001">View piece</button>
@@ -1614,7 +1475,49 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
               <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               See Jewelry
             </a>
-            <span class="slide-price"><small>Price</small> PKR 18,500</span>
+            <span class="slide-price"><small>Price</small> PKR 550</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+        <div class="slide-bg" data-bg-product="bb-bg-002"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <p class="slide-eyebrow">Earrings · BB-BG-002</p>
+          <h2 class="slide-title">Traditional gold-tone <em>earrings</em>.</h2>
+          <p class="slide-desc">
+            A classic set of gold-tone earrings with a fine engraved finish —
+            the ideal finishing touch for everyday and occasion wear.
+          </p>
+          <div class="slide-actions">
+            <button class="btn btn-primary" type="button" data-product-id="bb-bg-002">View piece</button>
+            <a class="btn btn-light" href="#catalogue">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              See Jewelry
+            </a>
+            <span class="slide-price"><small>Price</small> PKR 500</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+        <div class="slide-bg" data-bg-product="bb-bg-003"></div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <p class="slide-eyebrow">New · BB-BG-003</p>
+          <h2 class="slide-title">Classic gold-tone <em>earrings</em>.</h2>
+          <p class="slide-desc">
+            A delicate gold-tone design that pairs easily with both Eastern
+            and Western outfits, for a polished everyday look.
+          </p>
+          <div class="slide-actions">
+            <button class="btn btn-primary" type="button" data-product-id="bb-bg-003">View piece</button>
+            <a class="btn btn-light" href="#catalogue">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              See Jewelry
+            </a>
+            <span class="slide-price"><small>Price</small> PKR 390</span>
           </div>
         </div>
       </div>
@@ -1829,11 +1732,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
   </span>
 </a>
 
-<!-- ============================================================
-     PRODUCT DETAIL MODAL — attractive picture-card layout
-     ▸ NO arrows — click a thumbnail to switch photo + details
-     ▸ NO × close button — tap the backdrop or press Escape
-     ============================================================ -->
+<!-- PRODUCT DETAIL MODAL -->
 <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pdName" aria-hidden="true">
   <div class="modal-backdrop" data-close-modal></div>
 
@@ -2029,22 +1928,27 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
   /* ============================================================
      PRODUCTS — EDIT BELOW
      ────────────────────────────────────────────────────────────
-     Make sure each file path matches EXACTLY (case-sensitive):
-       ✓  Images/Earrings/1.jpg
-       ✗  Images/Earings/1.jpg    (missing an 'r')
-       ✗  images/earrings/1.jpg   (different case)
+     Fields per product:
+       id        → unique slug
+       name      → product name (shown everywhere)
+       itemCode  → SKU code
+       category  → bangles | jewelry-sets | earrings | rings |
+                   necklaces | bridal-jewelry
+       price     → price in PKR (number only)
+       images    → array of strings or { src, name } objects
+       badge     → 'Bestseller' | 'New' | 'Bridal' | 'Set' | ''
+       available → true / false
+
+     NOTE: `originalPrice` and `description` are no longer used.
      ============================================================ */
   var PRODUCTS = [
 
-    /* PRODUCT 1 — Bangles (with per-image names) */
     {
       id: 'bb-bg-001',
       name: 'Traditional Gold-Tone Bangles',
       itemCode: 'BB-BG-001',
       category: 'earrings',
       price: 550,
-      originalPrice: 1000,
-      description: 'A classic set of gold-tone bangles with a fine engraved finish.',
 
       images: [
         iv('Images/Earings/1.jpg', 'Traditional Gold-Tone Bangles'),
@@ -2056,145 +1960,108 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
       available: true
     },
 
-    /* PRODUCT 2 — Jewellery Set */
     {
-      id: 'bb-js-002',
-      name: 'Pearl & Gold-Tone Jewellery Set',
-      itemCode: 'BB-JS-002',
-      category: 'jewelry-sets',
-      price: 42500,
-      originalPrice: 49500,
-      description: 'A coordinated set pairing a pearl-accented necklace with matching earrings.',
-
-      images: [
-        iv(ph('BB-JS-002'), 'Pearl & Gold-Tone Jewellery Set'),
-        iv(ph('BB-JS-002'), 'Pearl & Gold-Tone Jewellery Set — Alternate'),
-        iv(ph('BB-JS-002'), 'Pearl & Gold-Tone Jewellery Set — Detail')
-      ],
-
-      badge: 'Set',
-      available: true
-    },
-
-    /* PRODUCT 3 — Earrings */
-    {
-      id: 'bb-er-003',
-      name: 'Chandbali Drop Earrings',
-      itemCode: 'BB-ER-003',
+      id: 'bb-bg-002',
+      name: 'Traditional Gold-Tone Earrings',
+      itemCode: 'BB-BG-002',
       category: 'earrings',
-      price: 9800,
-      originalPrice: 12500,
-      description: 'Crescent-shaped chandbali earrings with a delicate drop detail.',
+      price: 500,
 
       images: [
-        iv(ph('BB-ER-003'), 'Chandbali Drop Earrings'),
-        iv(ph('BB-ER-003'), 'Chandbali Drop Earrings — Side'),
-        iv(ph('BB-ER-003'), 'Chandbali Drop Earrings — Detail')
-      ],
-
-      badge: 'New',
-      available: true
-    },
-
-    /* PRODUCT 4 — Ring */
-    {
-      id: 'bb-rg-004',
-      name: 'Solitaire-Inspired Ring',
-      itemCode: 'BB-RG-004',
-      category: 'rings',
-      price: 26500,
-      originalPrice: 0,
-      description: 'A clean, solitaire-inspired ring with a single high-set stone and a slim band.',
-
-      images: [
-        iv(ph('BB-RG-004'), 'Solitaire-Inspired Ring'),
-        iv(ph('BB-RG-004'), 'Solitaire-Inspired Ring — On Finger'),
-        iv(ph('BB-RG-004'), 'Solitaire-Inspired Ring — Stone Detail')
-      ],
-
-      badge: '',
-      available: true
-    },
-
-    /* PRODUCT 5 — Necklace */
-    {
-      id: 'bb-nl-005',
-      name: 'Layered Chain Necklace',
-      itemCode: 'BB-NL-005',
-      category: 'necklaces',
-      price: 15500,
-      originalPrice: 18000,
-      description: 'A fine multi-layer chain necklace with a subtle gold-tone finish.',
-
-      images: [
-        iv(ph('BB-NL-005'), 'Layered Chain Necklace'),
-        iv(ph('BB-NL-005'), 'Layered Chain Necklace — Close-Up'),
-        iv(ph('BB-NL-005'), 'Layered Chain Necklace — Clasp Detail')
-      ],
-
-      badge: '',
-      available: true
-    },
-
-    /* PRODUCT 6 — Bridal Set */
-    {
-      id: 'bb-br-006',
-      name: 'Bridal Set — Gold Tone',
-      itemCode: 'BB-BR-006',
-      category: 'bridal-jewelry',
-      price: 125000,
-      originalPrice: 145000,
-      description: 'A complete bridal-style set with necklace, earrings and maang tikka.',
-
-      images: [
-        iv(ph('BB-BR-006'), 'Bridal Set — Gold Tone'),
-        iv(ph('BB-BR-006'), 'Bridal Set — Necklace Detail'),
-        iv(ph('BB-BR-006'), 'Bridal Set — Earrings & Tikka')
-      ],
-
-      badge: 'Bridal',
-      available: true
-    },
-
-    /* PRODUCT 7 — Bangles */
-    {
-      id: 'bb-bg-007',
-      name: 'Kada Bangle Pair',
-      itemCode: 'BB-BG-007',
-      category: 'bangles',
-      price: 34500,
-      originalPrice: 0,
-      description: 'A pair of wide kada-style bangles with a textured surface and a secure clasp.',
-
-      images: [
-        iv(ph('BB-BG-007'), 'Kada Bangle Pair'),
-        iv(ph('BB-BG-007'), 'Kada Bangle Pair — Side'),
-        iv(ph('BB-BG-007'), 'Kada Bangle Pair — Textured Detail')
-      ],
-
-      badge: '',
-      available: true
-    },
-
-    /* PRODUCT 8 — Earrings */
-    {
-      id: 'bb-er-008',
-      name: 'Classic Jhumka Earrings',
-      itemCode: 'BB-ER-008',
-      category: 'earrings',
-      price: 12500,
-      originalPrice: 15000,
-      description: 'Traditional jhumka earrings with a domed body and a small hanging bead detail.',
-
-      images: [
-        iv(ph('BB-ER-008'), 'Classic Jhumka Earrings'),
-        iv(ph('BB-ER-008'), 'Classic Jhumka Earrings — Side'),
-        iv(ph('BB-ER-008'), 'Classic Jhumka Earrings — Bead Detail')
+        iv('Images/Earings/4.jpg', 'Traditional Gold-Tone Earrings'),
+        iv('Images/Earings/5.jpg', 'Traditional Brown-Tone Earrings'),
+        iv('Images/Earings/6.jpg', 'Traditional Silver-Tone Earrings')
       ],
 
       badge: 'Bestseller',
       available: true
-    }
+    },
+
+    {
+      id: 'bb-bg-003',
+      name: 'Traditional Gold-Tone Earrings',
+      itemCode: 'BB-BG-003',
+      category: 'earrings',
+      price: 390,
+
+      images: [
+        iv('Images/Earings/7.jpg', 'Traditional Gold-Tone Earrings'),
+        iv('Images/Earings/8.jpg', 'Traditional Silver-Tone Earrings'),
+        iv('Images/Earings/9.jpg', 'Traditional Brown-Tone Earrings')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+    {
+      id: 'bb-bg-004',
+      name: 'Traditional Gold-Tone Earrings',
+      itemCode: 'BB-BG-004',
+      category: 'earrings',
+      price: 730,
+
+      images: [
+        iv('Images/Earings/10.jpg', 'Traditional Gold-Tone Earrings'),
+        iv('Images/Earings/11.jpg', 'Traditional Silver-Tone Earrings'),
+        iv('Images/Earings/12.jpg', 'Traditional Brown-Tone Earrings')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+    {
+      id: 'bb-bg-005',
+      name: 'Traditional Gold-Tone Earrings',
+      itemCode: 'BB-BG-005',
+      category: 'earrings',
+      price: 675,
+
+      images: [
+        iv('Images/Earings/13.jpg', 'Traditional Gold-Tone Earrings'),
+        iv('Images/Earings/14.jpg', 'Traditional Silver-Tone Earrings'),
+        iv('Images/Earings/15.jpg', 'Traditional Brown-Tone Earrings')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+    {
+      id: 'bb-bg-006',
+      name: 'Traditional Gold-Tone Earrings',
+      itemCode: 'BB-BG-006',
+      category: 'earrings',
+      price: 550,
+
+      images: [
+        iv('Images/Earings/16.jpg', 'Traditional Gold-Tone Earrings'),
+        iv('Images/Earings/17.jpg', 'Traditional Brown-Tone Earrings'),
+        iv('Images/Earings/18.jpg', 'Traditional Silver-Tone Earrings')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+    {
+      id: 'bb-bg-007',
+      name: 'Traditional Gold-Tone Earrings',
+      itemCode: 'BB-BG-007',
+      category: 'earrings',
+      price: 600,
+
+      images: [
+        iv('Images/Earings/19.jpg', 'Traditional Gold-Tone Earrings'),
+        iv('Images/Earings/20.jpg', 'Traditional Brown-Tone Earrings'),
+        iv('Images/Earings/21.jpg', 'Traditional Silver-Tone Earrings')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
 
     /* ────────────────────────────────────────────────
        TEMPLATE — ADD NEW PRODUCT HERE
@@ -2209,8 +2076,6 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
       itemCode: 'BB-XX-009',
       category: 'earrings',
       price: 15000,
-      originalPrice: 0,
-      description: 'Short description of the piece.',
       images: [
         iv('images/your-photo-1.jpg', 'Your New Product Name'),
         iv('images/your-photo-2.jpg', 'Your New Product Name — Side View'),
@@ -2332,16 +2197,12 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
   }
 
   /* ============================================================
-     RENDER: PRODUCT CARD
+     RENDER: PRODUCT CARD — just name + price now
      ============================================================ */
   function cardHTML(p) {
     var badge = p.badge
       ? '<span class="card-badge' + (p.badge.toLowerCase() === 'new' ? ' gold' : '') + '">' +
         esc(p.badge) + '</span>'
-      : '';
-
-    var original = (p.originalPrice && p.originalPrice > p.price)
-      ? '<s>' + money(p.originalPrice) + '</s>'
       : '';
 
     var firstSrc = imgSrc(p.images[0]);
@@ -2357,7 +2218,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
           '<span class="card-cat">' + esc(CATEGORY_LABELS[p.category]) + '</span>' +
           '<h3 class="card-name">' + esc(p.name) + '</h3>' +
           '<span class="card-code">' + esc(p.itemCode) + '</span>' +
-          '<div class="card-price">' + money(p.price) + original + '</div>' +
+          '<div class="card-price">' + money(p.price) + '</div>' +
           '<span class="card-view">View details <span aria-hidden="true">→</span></span>' +
         '</div>' +
       '</button>';
@@ -2400,7 +2261,6 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
 
   /* ============================================================
      PRODUCT MODAL — click thumbnails to switch photo + details
-     ▸ No arrows, no × close button (close via backdrop / Escape)
      ============================================================ */
   var modal = $('#productModal');
   var lastFocus = null;
@@ -2426,18 +2286,11 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
     $('#pdCategory').textContent = CATEGORY_LABELS[p.category];
     $('#pdCode').textContent = p.itemCode;
 
-    /* Price */
-    var priceHTML = '<span class="now">' + money(p.price) + '</span>';
-    if (p.originalPrice && p.originalPrice > p.price) {
-      var off = Math.round((1 - p.price / p.originalPrice) * 100);
-      priceHTML += '<span class="was">' + money(p.originalPrice) + '</span>';
-      priceHTML += '<span class="off">' + off + '% off</span>';
-    }
-    $('#pdPrice').innerHTML = priceHTML;
+    /* Price — just the current price now */
+    $('#pdPrice').innerHTML = '<span class="now">' + money(p.price) + '</span>';
 
     counterTotal.textContent = total;
 
-    /* Show image + update title */
     function showImage(index) {
       if (index < 0) index = total - 1;
       if (index >= total) index = 0;
@@ -2473,7 +2326,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
       });
     }
 
-    /* Build thumbnails — these are the ONLY navigation */
+    /* Build thumbnails — these are the only navigation */
     thumbsWrap.innerHTML = '';
     images.forEach(function (imgEntry, i) {
       var b = document.createElement('button');
@@ -2507,25 +2360,21 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
     current = 0;
     counterCurrent.textContent = '1';
 
-    /* Hide thumbs strip if only 1 image */
     if (total <= 1) {
       thumbsWrap.style.display = 'none';
     } else {
       thumbsWrap.style.display = '';
     }
 
-    /* Keyboard arrow nav still works */
     gallery = {
       prev: function () { showImage(current - 1); },
       next: function () { showImage(current + 1); }
     };
 
-    /* Open modal */
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('no-scroll');
 
-    /* Focus first thumbnail (or the panel if only one image) */
     var firstThumb = modal.querySelector('.pd-thumb');
     if (firstThumb) {
       firstThumb.focus();
