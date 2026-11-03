@@ -1664,6 +1664,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
           <li><a href="#catalogue" data-jump-cat="earrings">Earrings</a></li>
           <li><a href="#catalogue" data-jump-cat="rings">Rings</a></li>
           <li><a href="#catalogue" data-jump-cat="necklaces">Necklaces</a></li>
+          <li><a href="#catalogue" data-jump-cat="sahara">Sahara</a></li>
           <li><a href="#catalogue" data-jump-cat="bridal-jewelry">Bridal &amp; Occasion</a></li>
           <li><a href="#catalogue" data-jump-cat="all">All Pieces</a></li>
         </ul>
@@ -1933,7 +1934,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
        name      → product name (shown everywhere)
        itemCode  → SKU code
        category  → bangles | jewelry-sets | earrings | rings |
-                   necklaces | bridal-jewelry
+                   necklaces | bridal-jewelry | sahara
        price     → price in PKR (number only)
        images    → array of strings or { src, name } objects
        badge     → 'Bestseller' | 'New' | 'Bridal' | 'Set' | ''
@@ -2062,6 +2063,141 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
       available: true
     },
 
+     {
+      id: 'bb-sa-008',
+      name: 'One line sahara',
+      itemCode: 'BB-SA-008',
+      category: 'sahara',
+      price: 325,
+
+      images: [
+        iv('Images/Sahara/1.jpg', 'One line sahara — Gold'),
+        iv('Images/Sahara/2.jpg', 'One line sahara — Silver'),
+        iv('Images/Sahara/3.jpg', 'One line sahara — Antique Gold Polish')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+     {
+      id: 'bb-sa-009',
+      name: 'Two line sahara',
+      itemCode: 'BB-SA-009',
+      category: 'sahara',
+      price: 435,
+
+      images: [
+        iv('Images/Sahara/4.jpg', 'Two line sahara — Gold'),
+        iv('Images/Sahara/6.jpg', 'Two line sahara — Silver'),
+        iv('Images/Sahara/5.jpg', 'Two line sahara — Antique Gold Polish')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+ {
+      id: 'bb-sa-010',
+      name: 'Three Line Jhumki Sahara',
+      itemCode: 'BB-SA-010',
+      category: 'sahara',
+      price: 435,
+
+      images: [
+        iv('Images/Sahara/7.jpg', 'Three Line Jhumki Sahara — Gold'),
+        iv('Images/Sahara/9.jpg', 'Three Line Jhumki Sahara — Silver'),
+        iv('Images/Sahara/8.jpg', 'Three Line Jhumki Sahara — Antique Gold Polish')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+    {
+      id: 'bb-sa-011',
+      name: 'Three Line Jhumki Sahara',
+      itemCode: 'BB-SA-011',
+      category: 'sahara',
+      price: 1065,
+
+      images: [
+        iv('Images/Sahara/10.jpg', 'Three Line Jhumki Sahara — Gold'),
+        iv('Images/Sahara/12.jpg', 'Three Line Jhumki Sahara — Silver'),
+        iv('Images/Sahara/11.jpg', 'Three Line Jhumki Sahara — Antique Gold Polish')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+     {
+      id: 'bb-sa-012',
+      name: 'Three line sahara kundan ',
+      itemCode: 'BB-SA-012',
+      category: 'sahara',
+      price: 1040,
+
+      images: [
+        iv('Images/Sahara/13.jpg', 'Three Line Sahara kundan — Gold'),
+        iv('Images/Sahara/15.jpg', 'Three Line Sahara kundan — Silver'),
+        iv('Images/Sahara/14.jpg', 'Three Line Sahara  kundan — Antique Gold Polish')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+    {
+      id: 'bb-sa-013',
+      name: 'Three Line Sahara Pata Kundan ',
+      itemCode: 'BB-SA-013',
+      category: 'sahara',
+      price: 845,
+
+      images: [
+        iv('Images/Sahara/16.jpg', 'Three Line Sahara Pata Kundan — Gold'),
+        iv('Images/Sahara/18.jpg', 'Three Line Sahara Pata Kundan — Silver'),
+        iv('Images/Sahara/17.jpg', 'Three Line Sahara Pata Kundan — Antique Gold Polish')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+
+        {
+      id: 'bb-sa-014',
+      name: 'Three Line Sahara Gali Kundan ',
+      itemCode: 'BB-SA-014',
+      category: 'sahara',
+      price: 880,
+
+      images: [
+        iv('Images/Sahara/19.jpg', 'Three Line Sahara Gali Kundan — Gold'),
+        iv('Images/Sahara/21.jpg', 'Three Line Sahara Gali Kundan — Silver'),
+        iv('Images/Sahara/20.jpg', 'Three Line Sahara Gali Kundan — Antique Gold Polish')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
+    
+      {
+      id: 'bb-sa-015',
+      name: 'Three Line Sahara Gali Kundan ',
+      itemCode: 'BB-SA-015',
+      category: 'sahara',
+      price: 750,
+
+      images: [
+        iv('Images/Sahara/22.jpg', 'Three Line Sahara Gali Kundan — Gold'),
+        iv('Images/Sahara/24.jpg', 'Three Line Sahara Gali Kundan — Silver'),
+        iv('Images/Sahara/23.jpg', 'Three Line Sahara Gali Kundan — Antique Gold Polish')
+      ],
+
+      badge: 'Bestseller',
+      available: true
+    },
 
     /* ────────────────────────────────────────────────
        TEMPLATE — ADD NEW PRODUCT HERE
@@ -2086,7 +2222,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
     }
 
        Valid categories: bangles | jewelry-sets | earrings |
-                         rings | necklaces | bridal-jewelry
+                         rings | necklaces | bridal-jewelry | sahara
        Image types:      .jpg .jpeg .png .webp .avif .gif .svg
        ──────────────────────────────────────────────── */
 
@@ -2101,6 +2237,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
     'jewelry-sets': 'Jewelry Sets',
     'earrings': 'Earrings',
     'rings': 'Rings',
+    'sahara': 'Sahara',
     'necklaces': 'Necklaces',
     'bridal-jewelry': 'Bridal Jewelry'
   };
@@ -2157,7 +2294,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--cyan) var(--bg)}
      ============================================================ */
   function renderChips() {
     var wrap = $('#filterChips');
-    var categories = ['all', 'bangles', 'jewelry-sets', 'earrings', 'rings', 'necklaces', 'bridal-jewelry'];
+    var categories = ['all', 'bangles', 'jewelry-sets', 'earrings', 'rings', 'necklaces', 'bridal-jewelry', 'sahara'];
 
     wrap.innerHTML = categories.map(function (key) {
       var active = state.category === key ? ' is-active' : '';
